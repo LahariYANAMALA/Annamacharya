@@ -1,0 +1,62 @@
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class QueueCalculatorWithIterations {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Queue<Double> queue = new LinkedList<>();
+
+        System.out.print("Enter the size of the queue (number of elements): ");
+        int size = sc.nextInt();
+
+        System.out.println("Enter " + size + " numbers:");
+        for (int i = 0; i < size; i++) {
+            double num = sc.nextDouble();
+            queue.add(num);
+        }
+
+        System.out.print("Enter the operator (+, -, *, /): ");
+        char operator = sc.next().charAt(0);
+
+        if (queue.isEmpty()) {
+            System.out.println("Queue is empty. Cannot perform calculation.");
+            return;
+        }
+
+        double result = queue.poll(); // Start with the first number
+        System.out.println("Starting with: " + result);
+
+        int step = 1;
+        while (!queue.isEmpty()) {
+            double next = queue.poll();
+            System.out.print("Step " + step + ": " + result + " " + operator + " " + next + " = ");
+            switch (operator) {
+                case '+':
+                    result += next;
+                    break;
+                case '-':
+                    result -= next;
+                    break;
+                case '*':
+                    result *= next;
+                    break;
+                case '/':
+                    if (next != 0) {
+                        result /= next;
+                    } else {
+                        System.out.println("Error: Division by zero");
+                        return;
+                    }
+                    break;
+                default:
+                    System.out.println("Invalid operator.");
+                    return;
+            }
+            System.out.println(result);
+            step++;
+        }
+
+        System.out.println("Final result: " + result);
+    }
+}
