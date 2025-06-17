@@ -1,0 +1,22 @@
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class LinkedList {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        LinkedList<Double> numbers = new LinkedList<>();
+
+        System.out.print("How many numbers do you want to enter? ");
+        int n = sc.nextInt();
+
+        System.out.println("Enter " + n + " numbers:");
+        for (int i = 0; i < n; i++) {
+            numbers.add(sc.nextDouble());
+        }
+
+        System.out.print("Enter operator (+, -, *, /): ");
+        char operator = sc.next().charAt(0);
+
+        double result = numbers.get(0);
+
+        for (int i = 
