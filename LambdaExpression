@@ -1,0 +1,24 @@
+import java.util.*;
+
+public class LambdaExpression {
+    public static void main(String[] args) {
+        // List of names
+        List<String> names = Arrays.asList("Alice", "Bob", "Charlie", "David");
+
+        // Using lambda to print each name
+        System.out.println("Names:");
+        names.forEach(name -> System.out.println(name));
+
+        // Sorting using lambda (alphabetical order, reverse)
+        Collections.sort(names, (a, b) -> b.compareTo(a));
+
+        System.out.println("\nNames sorted in reverse order:");
+        names.forEach(name -> System.out.println(name));
+
+        // Filtering names that start with 'C' using stream + lambda
+        System.out.println("\nNames starting with C:");
+        names.stream()
+             .filter(name -> name.startsWith("C"))
+             .forEach(name -> System.out.println(name));
+    }
+}
